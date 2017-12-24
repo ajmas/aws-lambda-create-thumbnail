@@ -16,7 +16,9 @@ exports.handler = function (event, context) {
   var srcKey = event.Records[0].s3.object.key
   var dstBucket = srcBucket + '-thumb'
   var dstKey = srcKey
-
+  
+  console.info(`creating thumbnail from ${srcBucket} to ${dstBucket}, for ${srcKey}`);
+  
   // Sanity check: validate that source and destination are different buckets.
   if (srcBucket === dstBucket) {
     console.error('Destination bucket must not match source bucket.')
